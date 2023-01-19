@@ -1,0 +1,15 @@
+.noDataDive {
+    height: 77vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+
+    ion-text {}
+
+    ion-spinner {
+        margin-right: 10px;
+        margin-bottom: -6px;
+    }
+}

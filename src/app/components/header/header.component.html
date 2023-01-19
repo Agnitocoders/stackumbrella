@@ -1,0 +1,21 @@
+<app-menu></app-menu>
+<ion-grid id="main-content">
+  <ion-row class="fistHead">
+    <ion-col size="2" class="menu">
+      <ion-menu-button class="iconColor"></ion-menu-button>
+    </ion-col>
+    <ion-col size="7">
+      <ion-img class="logo" src="../../../assets/Logo-name.png"></ion-img>
+    </ion-col>
+    <ion-col size="3" class="headerBtn">
+      <div class="btnNoti" (click)=gotoNotification()>
+        <ion-icon class="iconColor" name="notifications-outline"></ion-icon>
+      </div>
+      <div class="btnNoti" (click)=gotoSearch()>
+        <ion-icon class="iconColor" name="search-sharp"></ion-icon>
+      </div>
+    </ion-col>
+
+  </ion-row>
+  <app-slide-nav></app-slide-nav>
+</ion-grid>

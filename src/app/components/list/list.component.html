@@ -1,0 +1,47 @@
+<div style="overflow: scroll;">
+  <div class="noDataDive" *ngIf='isLoading'>
+    <div>
+      <ion-spinner name="crescent"></ion-spinner><ion-text>Please wait...</ion-text>
+    </div>
+  </div>
+  <ion-list *ngIf="data">
+    <div *ngFor="let item of data; index as i;">
+      <div (click)="gotoDetailsPage(item)">
+        <div class="itemDiv">
+          <div>
+            <img *ngIf="item['_embedded']['wp:featuredmedia'][0]['media_details']"
+              [src]="item['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['medium']['source_url']" />
+
+            <img *ngIf="!item['_embedded']['wp:featuredmedia'][0]['media_details']"
+              src="./../../../assets/Logo-name.png" />
+          </div>
+          <div class="cardDetailsDiv">
+            <div class="text ellipsis">
+              <ion-text class="text-concat">{{removeTag(item.title.rendered)}}</ion-text>
+            </div>
+            <div class="btnRow">
+              <div>
+                <div>
+                  <ion-icon name="heart-outline"></ion-icon>
+                </div>
+              </div>
+              <div class='shareBtns'>
+                <div class="share-btn">
+                  <ion-icon name="bookmark-outline"></ion-icon>
+                </div>
+                <div class="share-btn">
+                  <ion-icon name="share-social-sharp"></ion-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-list>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</div>

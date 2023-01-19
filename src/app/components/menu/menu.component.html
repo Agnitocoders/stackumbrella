@@ -1,0 +1,36 @@
+<ion-menu swipeGesture="false" swipeEnabled="false" contentId="main-content" autoHide=false>
+  <ion-header>
+    <ion-toolbar class="themeBtn">
+      <ion-img class="logo" src="../../../assets/Logo-name.png"></ion-img>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <div class="listItem" (click)="goToPage('tabs')">
+        <ion-icon name="home"></ion-icon>
+        <ion-text>Home</ion-text>
+      </div>
+
+      <div class="listItem" (click)="goToPage('tabs/tab1/save-posts')">
+        <ion-icon name="bookmark"></ion-icon>
+        <ion-text>Saved Post</ion-text>
+      </div>
+
+      <div class="listItem" (click)="goToPage('tabs/tab1/profile')">
+        <ion-icon name="person"></ion-icon>
+        <ion-text>Profile</ion-text>
+      </div>
+
+      <div class="listItem" (click)="goToPage('tabs/tab1/settings')">
+        <ion-icon name="settings"></ion-icon>
+        <ion-text>Settings</ion-text>
+      </div>
+
+      <div class="listItem logout" (click)="goToPage('logout')">
+        <ion-icon name="power"></ion-icon>
+        <ion-text>Logout</ion-text>
+      </div>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>

@@ -1,0 +1,23 @@
+ion-content {
+    margin-top: 150px;
+}
+
+.mainView {
+    margin-top: 122px;
+}
+
+::-webkit-scrollbar {
+    display: none !important;
+}
+
+::-webkit-scrollbar {
+    display: none !important;
+}
+
+ion-content::webkit-scrollbar {
+    display: none !important;
+}
+
+*::-webkit-scrollbar {
+    display: none !important;
+}

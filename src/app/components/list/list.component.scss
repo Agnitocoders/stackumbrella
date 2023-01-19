@@ -1,0 +1,106 @@
+ion-avatar {
+    --border-radius: 4px;
+}
+
+ion-list {
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+img {
+    border-radius: 5px;
+    height: 85px;
+    width: 130px;
+
+}
+
+.post {
+    text-overflow: ellipsis;
+    line-height: 5px;
+}
+
+ion-text {
+    position: relative;
+    font-size: 15px;
+    color: black;
+    width: 250px;
+    font-weight: 600;
+    /* Could be anything you like. */
+}
+
+.text-concat {
+    position: relative;
+    display: inline;
+    overflow: hidden;
+    max-height: 49.6px;
+    line-height: 16px;
+}
+
+
+
+.text.ellipsis {
+    height: 48px;
+    overflow: hidden;
+}
+
+.cardDetailsDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 0px;
+    width: 80%;
+}
+
+.btnRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0px;
+    font-size: 20px;
+}
+
+.share-btn {
+    text-align: end;
+}
+
+.shareBtns {
+    display: flex;
+    justify-content: space-between;
+    width: 50px
+}
+
+.noDataDive {
+    height: 77vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+
+    ion-text {}
+
+    ion-spinner {
+        margin-right: 10px;
+        margin-bottom: -6px;
+    }
+}
+
+.itemDiv {
+    display: flex;
+    padding: 5px 10px 5px 8px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #D3D3D3;
+    justify-content: space-around;
+}
+
+::-webkit-scrollbar {
+    display: none !important;
+}
+
+ion-content::webkit-scrollbar {
+    display: none !important;
+}
+
+*::-webkit-scrollbar {
+    display: none !important;
+}

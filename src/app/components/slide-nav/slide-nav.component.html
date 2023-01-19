@@ -1,0 +1,12 @@
+<ion-list style="overflow: auto; white-space: nowrap;">
+  <ion-chip *ngFor="let item of natTopNav; index as i;" (click)="goToPage(item.id)">
+    <div class="iconDiv">
+      <ion-icon [name]=getIcon(item.name)></ion-icon>
+      <!-- <ion-icon name='home'></ion-icon> -->
+    </div>
+    <div>
+      <ion-label>{{item.name}}</ion-label>
+    </div>
+
+  </ion-chip>
+</ion-list>

@@ -1,0 +1,52 @@
+.logo {
+    height: 30px;
+}
+
+.themeBtn {
+    background-color: #ec353a;
+    color: white;
+}
+
+.listItem {
+    height: 50px;
+    width: 60vw;
+    background-color: #ec353a;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 32px;
+    margin-top: 15px;
+}
+
+ion-icon {
+    margin-right: 10px;
+    font-size: 21px;
+    color: #fff;
+
+}
+
+ion-text {
+    font-size: 17px;
+    margin-top: 0px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.logout {
+    background: white;
+    border: 1px solid #ec353a;
+
+    ion-text {
+        color: #000;
+        font-size: 17px;
+        margin-top: 6px;
+    }
+
+    ion-icon {
+        margin-right: 10px;
+        font-size: 21px;
+        color: #000;
+    }
+}

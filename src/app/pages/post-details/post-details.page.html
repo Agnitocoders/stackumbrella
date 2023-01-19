@@ -1,0 +1,51 @@
+<ion-content>
+  <div class="mainDiv">
+    <ion-text *ngIf="selectedPost.title" class="heading" [innerHTML]="selectedPost.title.rendered"></ion-text>
+    <div class="imgDetails">
+      <div>
+        <ion-text class="subHeading">{{selectedPost.date | date: 'MMMM dd, yyyy'}}</ion-text>
+      </div>
+      <div class="views">
+        <img src="../../../assets/icon/flame.png">
+        <ion-text class="subHeading">6</ion-text>
+      </div>
+    </div>
+
+    <img *ngIf="selectedPost['_embedded']"
+      [src]="selectedPost['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url']" />
+    <div class="btn-row">
+      <div>
+        <ion-icon name="heart-outline"></ion-icon>
+      </div>
+      <div>
+        <ion-icon name="bookmark-outline"></ion-icon>
+      </div>
+    </div>
+    <!-- <ion-text class="subHeading">Updated on {{selectedPost.modified | date: 'dd/MM/yyyy'}}</ion-text> -->
+    <!-- <ion-text class="subHeading" *ngIf="selectedPost['_embedded']">
+      <ion-icon name="person" class="userIcn"></ion-icon>
+      By
+      {{selectedPost['_embedded']['author'][0]['name']}}</ion-text> -->
+    <ion-text class="post">{{ postDetails }}</ion-text>
+  </div>
+  <div class="mainDiv withInner" *ngIf="selectedPost['_embedded']">
+    <div class="innerDiv" [innerHTML]="selectedPost.content.rendered">
+    </div>
+  </div>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button color="danger">
+      <ion-icon name="share-social-sharp"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button>
+        <ion-icon name="logo-whatsapp"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+</ion-content>

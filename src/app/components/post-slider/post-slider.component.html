@@ -1,0 +1,12 @@
+<div *ngIf="dataService.featurePost">
+  <ion-slides *ngIf="dataService.featurePost" [options]=" slideOpts">
+    <ion-slide *ngFor="let item of dataService.featurePost; index as i;" (click)="gotoDetailsPage(item)">
+      <div class='itmDiv'>
+        <img class='imgDiv' *ngIf="item['_embedded']['wp:featuredmedia'][0]['media_details']"
+          [src]="item['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['full']['source_url']">
+        <p [innerHTML]="item.title.rendered"></p>
+      </div>
+
+    </ion-slide>
+  </ion-slides>
+</div>
