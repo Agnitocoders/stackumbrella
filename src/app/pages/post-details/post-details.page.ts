@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MenuController } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @Component({
   selector: 'app-post-details',
@@ -16,7 +17,8 @@ export class PostDetailsPage implements OnInit {
   constructor(
     private dataService: DataService,
     public menuCtr: MenuController,
-    public domSanitizer: DomSanitizer
+    public domSanitizer: DomSanitizer,
+    private socialSharing: SocialSharing
   ) { }
 
   ngOnInit() {
@@ -28,14 +30,8 @@ export class PostDetailsPage implements OnInit {
 
   ionViewWillEnter() {
     this.selectedPost = this.dataService.selectedPost;
-    // this.id = this.dataService.selectedPost
-    // console.log(this.dataService.selectedPost);
     const render = this.selectedPost.content;
-    console.log(this.selectedPost)
-    console.log(this.selectedPost['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['thumbnail']['source_url']);
     this.selectedPost.content.rendered = this.domSanitizer.bypassSecurityTrustHtml(this.selectedPost.content.rendered);
-    // this.selectedPost.content.rendered = this.domSanitizer.bypassSecurityTrustScript(this.selectedPost.content.rendered);
-    // console.log(this.postDetails);
   }
 
   removeTag(string: string) {
@@ -49,6 +45,10 @@ export class PostDetailsPage implements OnInit {
 
   ionViewWillLeave() {
     this.menuCtr.close()
+  }
+
+  share(uri: string) {
+    this.socialSharing.share(uri);
   }
 
 }

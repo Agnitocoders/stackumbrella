@@ -9,10 +9,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NoSanitizePipe } from './util/nosanitizerpipe';
 import { InAppBrowser } from '@awesome-cordova-plugins/in-app-browser/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
 @NgModule({
   declarations: [AppComponent,],
   imports: [HttpClientModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule],
-  providers: [NoSanitizePipe, InAppBrowser, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [NoSanitizePipe, InAppBrowser, SocialSharing, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

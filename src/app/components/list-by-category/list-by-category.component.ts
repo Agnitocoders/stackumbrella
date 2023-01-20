@@ -3,6 +3,7 @@ import { Component, ViewChild, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { IonInfiniteScroll, IonVirtualScroll } from '@ionic/angular';
+import { App } from 'src/AppConstant';
 @Component({
   selector: 'app-list-by-category',
   templateUrl: './list-by-category.component.html',
@@ -31,6 +32,13 @@ export class ListByCategoryComponent implements OnInit {
     this.getRecords();
   }
 
+  handleRefresh(event: any) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      this.getRecords()
+      event.target.complete();
+    }, 2000);
+  };
 
   async getRecords() {
     this.page = this.page + 1;
@@ -38,7 +46,7 @@ export class ListByCategoryComponent implements OnInit {
     var updatedData: any[] = []
     try {
       this.isLoading = true
-      this.http.get('https://stackumbrella.com/wp-json/wp/v2/posts?page=' + this.page + '&categories=' + this.id + '&_embed')
+      this.http.get(this.dataService.BaseUrl + App.PostFix + App.PostPage + this.page + App.PostCategory + this.id + App.Embd)
         .subscribe((resp: any) => {
           updatedData = resp;
           resp.forEach((element: any) => {

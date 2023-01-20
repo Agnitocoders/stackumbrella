@@ -20,6 +20,28 @@
     margin-top: 15px;
 }
 
+.langGrp {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.langBtn {
+    height: 50px;
+    width: 47%;
+    background: #ec353a;
+    border-radius: 60px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+    ion-text {
+        font-size: 14px;
+    }
+}
+
 ion-icon {
     margin-right: 10px;
     font-size: 21px;
@@ -34,6 +56,12 @@ ion-text {
     font-weight: 600;
 }
 
+p {
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+}
+
 .logout {
     background: white;
     border: 1px solid #ec353a;
@@ -41,7 +69,6 @@ ion-text {
     ion-text {
         color: #000;
         font-size: 17px;
-        margin-top: 6px;
     }
 
     ion-icon {

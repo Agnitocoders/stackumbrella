@@ -10,25 +10,4 @@ export class WebComponent {
 
   constructor() { }
 
-
-
-
-
-  // ionViewWillEnter() {
-  //   const options: InAppBrowserOptions = {
-  //     location: 'no',
-  //     clearcache: 'yes',
-  //     zoom: 'yes',
-  //     toolbar: 'yes',
-  //     closebuttoncaption: 'close'
-  //   };
-
-  //   const browser = this.iab.create('https://www.stackumbrella.com/web-stories', '_self', options)
-  //   browser.on('loadstop').subscribe(event => {
-  //     const navUrl = event.url;
-  //     if (navUrl.includes('success')) {
-  //       browser.close();
-  //     }
-  //   })
-  // }
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import { App } from 'src/AppConstant';
 
 @Component({
   selector: 'app-slide-nav',
@@ -24,10 +25,17 @@ export class SlideNavComponent implements OnInit {
   async getAllCategory() {
     try {
       this.isLoading = true
-      this.http.get('https://stackumbrella.com/wp-json/wp/v2/categories?per_page=100')
+      this.http.get(this.dataService.BaseUrl + App.PostFix + App.NavCategoryPerPage)
         .subscribe((res: any) => {
-          this.natTopNav = res;
-          console.log('Category res >>>>>>>', res);
+          // this.natTopNav = res;
+          let rest = res
+          console.log('Category res >>>>>>>', rest);
+          for (let i = 0; i < rest.length; i++) {
+            if (rest[i].count > 0) {
+              this.natTopNav.push(rest[i]);
+            }
+          }
+
           this.isLoading = false
         });
     } catch (error) {

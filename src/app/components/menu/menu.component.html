@@ -26,6 +26,17 @@
         <ion-text>Settings</ion-text>
       </div>
 
+      <div class="listItem langGrp" (click)="changeLanguage()">
+        <!-- <P>{{dataService.language}}</P> -->
+        <div class="langBtn" (click)="changeLanguage()">
+          <ion-text>Hindi</ion-text>
+        </div>
+
+        <div class="langBtn" (click)="changeLanguage()">
+          <ion-text>English</ion-text>
+        </div>
+      </div>
+
       <div class="listItem logout" (click)="goToPage('logout')">
         <ion-icon name="power"></ion-icon>
         <ion-text>Logout</ion-text>

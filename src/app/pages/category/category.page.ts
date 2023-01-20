@@ -25,4 +25,12 @@ export class CategoryPage implements OnInit {
 
   }
 
+  handleRefresh(event: any) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      // this.getRecords
+      event.target.complete();
+    }, 2000);
+  };
+
 }

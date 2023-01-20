@@ -1,4 +1,9 @@
 <div style="overflow: scroll;">
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <div class="noDataDive" *ngIf='isLoading'>
     <div>
       <ion-spinner name="crescent"></ion-spinner><ion-text>Please wait...</ion-text>
@@ -29,7 +34,7 @@
                 <div class="share-btn">
                   <ion-icon name="bookmark-outline"></ion-icon>
                 </div>
-                <div class="share-btn">
+                <div class="share-btn" (click)="share($event, item.link)">
                   <ion-icon name="share-social-sharp"></ion-icon>
                 </div>
               </div>

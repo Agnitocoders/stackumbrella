@@ -3,6 +3,8 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
 import { IonInfiniteScroll, IonVirtualScroll } from '@ionic/angular';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { App } from 'src/AppConstant';
 
 @Component({
   selector: 'app-list',
@@ -23,17 +25,27 @@ export class ListComponent implements OnInit {
   constructor(
     public dataService: DataService,
     private http: HttpClient,
-    private router: Router) { }
+    private socialSharing: SocialSharing,
+    private router: Router
+  ) { }
 
   async ngOnInit() {
+    this.dataService.BaseUrl
     this.getAllPost();
 
   }
+  handleRefresh(event: any) {
+    setTimeout(() => {
+      this.getAllPost()
+      console.log(this.dataService.BaseUrl)
+      event.target.complete();
+    }, 2000);
+  };
 
   async getAllPost() {
     try {
       this.isLoading = true
-      this.http.get('https://stackumbrella.com/wp-json/wp/v2/posts?page=' + this.page + '&_embed')
+      this.http.get(this.dataService.BaseUrl + App.PostFix + App.PostPage + this.page + App.Embd)
         .subscribe((res: any) => {
           // this.data = res;
           // console.log(res);
@@ -121,6 +133,12 @@ export class ListComponent implements OnInit {
     div.innerHTML = html;
     var text = div.textContent || div.innerText || " ";
     return text;
+  }
+
+  share(event: Event, uri: string) {
+    event.stopPropagation();
+    console.log(uri)
+    this.socialSharing.share(uri);
   }
 
 }

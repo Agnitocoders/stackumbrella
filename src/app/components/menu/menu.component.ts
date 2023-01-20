@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { App } from '@capacitor/app';
+import { DataService } from 'src/app/services/data.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -11,10 +12,13 @@ export class MenuComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public menuCtr: MenuController
+    public menuCtr: MenuController,
+    public dataService: DataService
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this
+  }
 
   goToPage(pageName: string) {
 
@@ -26,6 +30,10 @@ export class MenuComponent implements OnInit {
       this.menuCtr.close();
     }
 
+  }
+
+  changeLanguage() {
+    this.dataService.LangAlert()
   }
 
 }

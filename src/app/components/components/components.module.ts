@@ -27,6 +27,7 @@ import { WebComponent } from '../web/web.component';
     CommonModule,
     IonicModule,
     FormsModule,
+    // SocialSharing
   ],
   exports: [
     HeaderComponent,

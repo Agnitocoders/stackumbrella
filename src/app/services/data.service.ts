@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AlertController, MenuController } from '@ionic/angular';
+import { App } from 'src/AppConstant';
 
 @Injectable({
   providedIn: 'root'
@@ -9,22 +11,83 @@ export class DataService {
   allPost = [];
   featurePost: any[] = [];
   selectedCategory = '';
-  constructor(public http: HttpClient) {
-    // this.getAllPost()
+  BaseUrl = '';
+  language: string = ''
+  constructor(
+    public http: HttpClient,
+    public alertController: AlertController,
+    public menuCtr: MenuController
+  ) {
+    this.setLanguage()
   }
 
-  async getAllPost() {
-    // let data: any = [];
-    return this.http.get('https://stackumbrella.com/wp-json/wp/v2/posts?_embed')
-      .subscribe(async (res: any) => {
-        this.allPost = await res;
-        // const data = res;
-        // console.log(' post and imgs >>>>>>>>>>>')
-        // console.log(data);
-        return this.allPost
-      })
+
+  setLanguage() {
+    let lang = localStorage.getItem('language');
+    console.log(lang)
+    if (lang == '' || lang == 'english') {
+      this.language = 'english';
+      localStorage.setItem('language', this.language);
+      this.BaseUrl = App.BaseUrl;
+      return
+    } if (lang == 'hindi') {
+      this.language = 'hindi';
+      localStorage.setItem('language', this.language);
+      this.BaseUrl = App.BaseUrl2;
+    }
+    console.log('this is lang is hare >>>>>> ', lang);
   }
 
+
+  async LangAlert() {
+    let lang = ''
+    const header = 'Change language?';
+    let subHeader = '';
+    if (this.language == 'hindi') {
+      subHeader = 'English Language';
+      lang = 'english'
+    } if (this.language == 'english') {
+      subHeader = 'हिन्दी भाषा'
+      lang = 'hindi'
+    }
+    console.log(lang)
+
+    const alert = await this.alertController.create({
+      mode: "ios",
+      header: header,
+      subHeader: subHeader,
+      backdropDismiss: true,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            this.menuCtr.close()
+          },
+        },
+        {
+          text: 'OK',
+          role: 'confirm',
+          handler: () => {
+            console.log(lang)
+            localStorage.setItem('language', lang);
+            this.language = lang;
+            if (this.language == 'hindi') {
+              this.BaseUrl = App.BaseUrl2
+            }
+            if (this.language == 'english') {
+
+              this.BaseUrl = App.BaseUrl
+            }
+            this.menuCtr.close()
+          },
+        },
+      ],
+
+    });
+
+    await alert.present();
+  }
 
 
 
